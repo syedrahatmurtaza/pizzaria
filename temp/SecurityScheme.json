@@ -1,0 +1,23 @@
+{
+    "oAuth2": {
+        "type": "oauth2",
+        "flows": {
+            "password": {
+                "tokenUrl": "http://localhost:3000/user/login"
+            },
+            "implicit": {
+                "authorizationUrl": "http://localhost:3000/user/login"
+            },
+            "authorizationCode": {
+                "authorizationUrl": "http://localhost:3000/user/login",
+                "tokenUrl": "http://localhost:3000/user/login"
+            },
+            "clientCredentials": {
+                "tokenUrl": "http://localhost:3000/user/login"
+            },
+            "application": {
+                "tokenUrl": "http://localhost:3000/user/login"
+            }
+        }
+    }
+}
