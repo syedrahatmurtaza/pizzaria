@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Route, Security, Tags } from "tsoa";
+import { Body, Controller, Example, Post, Route, Security, Tags } from "tsoa";
 import { MenuRepository } from "../repositories/menu.repository";
 import { IMenu } from "../types/document/menu.document";
 import { IMenuCreateRequest, IMenuInsertItemRequest } from "../types/requests/menu.request";
@@ -12,25 +12,28 @@ export class MenuController extends Controller {
         super()
     }
 
-    /**
-     * @summary This will create a new menu in the system
-     */
+    @Example({
+        name: "Monday Morning"
+    })
     @Post("/createMenu")
+    /**
+     * @swagger
+     * /menu/createMenu:
+     *  post:
+     *      
+     */
     async createMenu(@Body() refBody: IMenuCreateRequest): Promise<IMenuCreateResponse> {
         let menu: any = await new MenuRepository().createMenu(<IMenu>refBody)
         return <IMenuCreateResponse>menu;
     }
 
-    /**
-     * @summary This will add new item to the menu 
-     */
     @Post("/insertMenuItem")
     async insertMenuItem(@Body() refBody: IMenuInsertItemRequest): Promise<IMenuInsertItemResponse> {
         let menu: any = await new MenuRepository().insertMenuItem(refBody)
         return <IMenuInsertItemResponse>menu
     }
 
-    @Security("oAuth2")
+    @Security("bearerAuth")
     @Post("/getAllMenus")
     async getAllMenus(): Promise<IMenuGetAllMenuResponse[]> {
         let menus: any = await new MenuRepository().getAllMenus()

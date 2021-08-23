@@ -1,5 +1,7 @@
 import express from 'express'
 import jwt from 'jsonwebtoken'
+import { UserController } from '../controllers/user.controller'
+import { IUserRegisterRequest } from '../types/requests/user.request'
 import { serverSecret } from '../utils/constants'
 import { MenuRouter } from './menu.routes'
 import { PizzaRouter } from './pizza.routes'
@@ -18,6 +20,14 @@ export class IndexRoute {
         this.router.use("/pizza", this.verifyToken, PizzaRouter)
         this.router.use('/menu', this.verifyToken, MenuRouter)
         this.router.use('/user', UserRouter)
+        // Register User Route
+        this.router.post("/registerUser", async function (req, res, next) {
+            console.log(req.body);
+
+            let user: IUserRegisterRequest = req.body
+            let response: any = await new UserController().registerUser(user)
+            res.send(response)
+        })
 
         this.router.post("/user/login", async function (req, res, next) {
             console.log(req)

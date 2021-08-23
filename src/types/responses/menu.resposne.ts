@@ -17,12 +17,12 @@ export interface IMenuInsertItemResponse {
 export interface IMenuGetAllMenuResponse {
     _id: string,
     name: string,
-    items: Array<singlePizza>,
+    items: Array<ISinglePizza>,
     createdAt: string,
     updatedAt: string
 }
 
-interface singlePizza {
+interface ISinglePizza {
     _id: string,
     name: string,
     size: string,

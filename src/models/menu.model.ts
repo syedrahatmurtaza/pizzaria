@@ -1,6 +1,6 @@
 import { model, Schema } from "mongoose";
 import { IMenu } from "../types/document/menu.document";
-import { dbColMenu } from "../utils/constants";
+import { dbColMenu, dbColPizza } from "../utils/constants";
 
 const MenuSchema = new Schema(
     {
@@ -11,7 +11,7 @@ const MenuSchema = new Schema(
         items: [
             {
                 type: Schema.Types.ObjectId,
-                ref: "pizza"
+                ref: dbColPizza
             }
         ]
     },

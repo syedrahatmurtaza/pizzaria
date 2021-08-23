@@ -104,7 +104,7 @@
 				"type": "object",
 				"additionalProperties": false
 			},
-			"singlePizza": {
+			"ISinglePizza": {
 				"properties": {
 					"_id": {
 						"type": "string"
@@ -147,7 +147,7 @@
 					},
 					"items": {
 						"items": {
-							"$ref": "#/components/schemas/singlePizza"
+							"$ref": "#/components/schemas/ISinglePizza"
 						},
 						"type": "array"
 					},
@@ -267,6 +267,79 @@
 				"type": "object",
 				"additionalProperties": false
 			},
+			"IUserRegisterResponse": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"accessToken": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"name",
+					"email",
+					"password",
+					"accessToken",
+					"createdAt",
+					"updatedAt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IUserRegisterErrorResponse": {
+				"properties": {
+					"errorCode": {
+						"type": "number",
+						"format": "double"
+					},
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"errorCode",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IUserRegisterRequest": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"email",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"IUserGetAcessTokenReponse": {
 				"properties": {
 					"accessToken": {
@@ -279,7 +352,7 @@
 				"type": "object",
 				"additionalProperties": false
 			},
-			"IUser": {
+			"IUserNoDoc": {
 				"properties": {
 					"_id": {
 						"type": "string"
@@ -307,10 +380,6 @@
 				"name": "authorization",
 				"in": "header",
 				"bearerFormat": "JWT"
-			},
-			"oAuth2": {
-				"type": "oauth2",
-				"flows": {}
 			}
 		}
 	},
@@ -334,12 +403,18 @@
 							"application/json": {
 								"schema": {
 									"$ref": "#/components/schemas/IMenuCreateResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"name": "Monday Morning"
+										}
+									}
 								}
 							}
 						}
 					}
 				},
-				"summary": "This will create a new menu in the system",
 				"tags": [
 					"Menu Creation and Item Addition Endpoints"
 				],
@@ -372,7 +447,6 @@
 						}
 					}
 				},
-				"summary": "This will add new item to the menu",
 				"tags": [
 					"Menu Creation and Item Addition Endpoints"
 				],
@@ -413,7 +487,7 @@
 				],
 				"security": [
 					{
-						"oAuth2": []
+						"bearerAuth": []
 					}
 				],
 				"parameters": []
@@ -484,6 +558,45 @@
 				}
 			}
 		},
+		"/user/registerUser": {
+			"post": {
+				"operationId": "RegisterUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/IUserRegisterResponse"
+										},
+										{
+											"$ref": "#/components/schemas/IUserRegisterErrorResponse"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User Routes"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IUserRegisterRequest"
+							}
+						}
+					}
+				}
+			}
+		},
 		"/user/accessToken": {
 			"post": {
 				"operationId": "GetAccessToken",
@@ -500,7 +613,7 @@
 					}
 				},
 				"tags": [
-					"Recieve Access Token"
+					"User Routes"
 				],
 				"security": [],
 				"parameters": [],
@@ -509,7 +622,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/IUser"
+								"$ref": "#/components/schemas/IUserNoDoc"
 							}
 						}
 					}

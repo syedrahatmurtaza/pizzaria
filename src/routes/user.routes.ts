@@ -1,6 +1,8 @@
 import express, { response } from 'express'
 import { UserController } from '../controllers/user.controller'
-import { IUser, IUserGetAcessTokenReponse } from '../interfaces/user.interface'
+import { IUserNoDoc, IUserGetAcessTokenReponse } from '../interfaces/user.interface'
+import { IUserRegisterRequest } from '../types/requests/user.request'
+import { IUserRegisterResponse } from '../types/responses/user.response'
 
 export class UserRoutes {
     router: express.Router
@@ -11,10 +13,20 @@ export class UserRoutes {
     }
 
     configRoutes() {
+        // Validate User Route
         this.router.post("/accessToken", async function (req, res, next) {
-            let user: IUser = req.body
+            let user: IUserNoDoc = req.body
             let resposne: IUserGetAcessTokenReponse = await new UserController().getAccessToken(user)
             res.send(resposne)
+        })
+
+        // Register User Route
+        this.router.post("/registerUser", async function (req, res, next) {
+            console.log(req.body);
+
+            let user: IUserRegisterRequest = req.body
+            let response: any = await new UserController().registerUser(user)
+            res.send(response)
         })
     }
 }
