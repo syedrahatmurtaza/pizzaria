@@ -12,3 +12,38 @@ export interface IUserRegisterErrorResponse {
     errorCode: number,
     message: string
 }
+
+export interface IUserGetAllResposne {
+    _id: string,
+    name: string,
+    email: string,
+    password: string,
+    accessToken: string,
+    createdAt: string,
+    updatedAt: string,
+}
+
+export interface IUserUpdateResposne {
+    _id: string,
+    name: string,
+    email: string,
+    password: string,
+    accessToken: string,
+    createdAt: string,
+    updatedAt: string,
+}
+
+export interface IUserGetUserNotFoundReponse {
+    errorCode: number,
+    message: string
+}
+
+export interface IUserGetUserResponse {
+    _id: string,
+    name: string,
+    email: string,
+    password: string,
+    accessToken: string,
+    createdAt: string,
+    updatedAt: string,
+}

@@ -4,11 +4,11 @@
   "description": "",
   "main": "build/index.js",
   "scripts": {
-    "start": "tsc && node build/index.js",
+    "start": "node build/src/index.js",
     "predev": "rimraf ./public/swagger.json && npm run swagger",
     "prebuild": "rimraf ./public/swagger.json && npm run swagger",
     "swagger": "tsoa spec",
-    "build": "tsc",
+    "build": "rimraf ./build && tsc",
     "dev": "concurrently \"nodemon\"  \"nodemon -x tsoa spec\""
   },
   "keywords": [],

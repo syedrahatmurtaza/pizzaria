@@ -6,6 +6,267 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
+			"IUserRegisterResponse": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"accessToken": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"name",
+					"email",
+					"password",
+					"accessToken",
+					"createdAt",
+					"updatedAt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IUserRegisterErrorResponse": {
+				"properties": {
+					"errorCode": {
+						"type": "number",
+						"format": "double"
+					},
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"errorCode",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IUserRegisterRequest": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"email",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IUserGetAllResposne": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"accessToken": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"name",
+					"email",
+					"password",
+					"accessToken",
+					"createdAt",
+					"updatedAt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IUserGetUserResponse": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"accessToken": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"name",
+					"email",
+					"password",
+					"accessToken",
+					"createdAt",
+					"updatedAt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IUserGetUserRequest": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IUserGetAcessTokenReponse": {
+				"properties": {
+					"accessToken": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"accessToken"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IUserNoDoc": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"email",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IUserUpdateResposne": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"accessToken": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"name",
+					"email",
+					"password",
+					"accessToken",
+					"createdAt",
+					"updatedAt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IUserUpdateRequest": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"accessToken": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"name",
+					"email",
+					"password",
+					"accessToken",
+					"createdAt",
+					"updatedAt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"IMenuCreateResponse": {
 				"properties": {
 					"_id": {
@@ -266,111 +527,6 @@
 				],
 				"type": "object",
 				"additionalProperties": false
-			},
-			"IUserRegisterResponse": {
-				"properties": {
-					"_id": {
-						"type": "string"
-					},
-					"name": {
-						"type": "string"
-					},
-					"email": {
-						"type": "string"
-					},
-					"password": {
-						"type": "string"
-					},
-					"accessToken": {
-						"type": "string"
-					},
-					"createdAt": {
-						"type": "string"
-					},
-					"updatedAt": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"_id",
-					"name",
-					"email",
-					"password",
-					"accessToken",
-					"createdAt",
-					"updatedAt"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"IUserRegisterErrorResponse": {
-				"properties": {
-					"errorCode": {
-						"type": "number",
-						"format": "double"
-					},
-					"message": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"errorCode",
-					"message"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"IUserRegisterRequest": {
-				"properties": {
-					"name": {
-						"type": "string"
-					},
-					"email": {
-						"type": "string"
-					},
-					"password": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"name",
-					"email",
-					"password"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"IUserGetAcessTokenReponse": {
-				"properties": {
-					"accessToken": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"accessToken"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"IUserNoDoc": {
-				"properties": {
-					"_id": {
-						"type": "string"
-					},
-					"email": {
-						"type": "string"
-					},
-					"password": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"_id",
-					"email",
-					"password"
-				],
-				"type": "object",
-				"additionalProperties": false
 			}
 		},
 		"securitySchemes": {
@@ -393,6 +549,190 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
+		"/user/registerUser": {
+			"post": {
+				"operationId": "RegisterUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/IUserRegisterResponse"
+										},
+										{
+											"$ref": "#/components/schemas/IUserRegisterErrorResponse"
+										}
+									]
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"name": "Syed Rahat Murtaza",
+											"email": "rahat_murtaza@outlook.com",
+											"password": "rahat1996"
+										}
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden Request"
+					},
+					"409": {
+						"description": "User Already Exist",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IUserRegisterErrorResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "You will be able to register but if the user already exists then it will generate 500 error with message User already exist",
+				"summary": "You will be able to register user and generate the accessToken with it",
+				"tags": [
+					"User Routes"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IUserRegisterRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/user/getAllUsers": {
+			"get": {
+				"operationId": "GetAllUsers",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/IUserGetAllResposne"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User Routes"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/user/getUser": {
+			"post": {
+				"operationId": "GetUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IUserGetUserResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User Routes"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IUserGetUserRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/user/accessToken": {
+			"post": {
+				"operationId": "GetAccessToken",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IUserGetAcessTokenReponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User Routes"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IUserNoDoc"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/user/updateUser": {
+			"put": {
+				"operationId": "UpdateUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IUserUpdateResposne"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User Routes"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IUserUpdateRequest"
+							}
+						}
+					}
+				}
+			}
+		},
 		"/menu/createMenu": {
 			"post": {
 				"operationId": "CreateMenu",
@@ -552,77 +892,6 @@
 						"application/json": {
 							"schema": {
 								"$ref": "#/components/schemas/IPizzaDeleteRequest"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/user/registerUser": {
-			"post": {
-				"operationId": "RegisterUser",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"anyOf": [
-										{
-											"$ref": "#/components/schemas/IUserRegisterResponse"
-										},
-										{
-											"$ref": "#/components/schemas/IUserRegisterErrorResponse"
-										}
-									]
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"User Routes"
-				],
-				"security": [],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/IUserRegisterRequest"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/user/accessToken": {
-			"post": {
-				"operationId": "GetAccessToken",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/IUserGetAcessTokenReponse"
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"User Routes"
-				],
-				"security": [],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/IUserNoDoc"
 							}
 						}
 					}

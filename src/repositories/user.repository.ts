@@ -1,19 +1,20 @@
 import { IUserNoDoc, IUserSaveDoc } from "../interfaces/user.interface";
 import jwt from 'jsonwebtoken'
 import { serverSecret } from "../utils/constants";
-import { IUserRegisterRequest } from "../types/requests/user.request";
-import { IUserRegisterErrorResponse, IUserRegisterResponse } from "../types/responses/user.response";
+import { IUserRegisterRequest, IUserUpdateRequest } from "../types/requests/user.request";
+import { IUserRegisterErrorResponse, IUserRegisterResponse, IUserUpdateResposne } from "../types/responses/user.response";
 import { UserModel } from "../models/user.model";
 import { IUser } from "../types/document/user.document";
+import { isValidObjectId } from "mongoose";
+import { InvalidObjectIdError } from "../interfaces/error.interface";
 
 export class UserRepository {
     constructor() {
-
     }
 
     async registerUser(request: IUserRegisterRequest): Promise<IUserRegisterResponse | IUserRegisterErrorResponse> {
-        const user = UserModel.find().where("email", request.email)
-        if (user !== undefined) {
+        const user: IUser[] = await UserModel.find().where("email", request.email)
+        if (user.length !== 0) {
             return <IUserRegisterErrorResponse>{
                 errorCode: 500,
                 message: "User already registered"
@@ -25,6 +26,26 @@ export class UserRepository {
             const userNew = await new UserModel(saveUserObj).save()
             return <IUserRegisterResponse | any>userNew
         }
+    }
+
+    async getAllUsers() {
+        let users: IUser[] = await UserModel.find()
+        return users
+    }
+
+    async getUser(userId: string) {
+        if (isValidObjectId(userId)) {
+            return await UserModel.find().where('_id', userId)
+        }
+
+        return <InvalidObjectIdError>{
+            errorCode: 404,
+            message: "Invalid Object Id"
+        }
+    }
+
+    async updateUser(user: IUserUpdateRequest) {
+        return await UserModel.findByIdAndUpdate(user._id, user, { new: true })
     }
 
     getAccessToken(user: IUserNoDoc) {
