@@ -1,11 +1,10 @@
 import express, { Application, Request, Response, NextFunction } from 'express'
 import morgan from 'morgan'
 import { MongoDb } from './config/db.connection'
-import { dbHost, dbName, sPort } from './utils/constants'
+import { sPort } from './utils/constants'
 import swaggerUi from 'swagger-ui-express'
 import { Server } from 'http'
 import { MainRouter } from './routes/index.routes'
-import swaggerJsDoc from 'swagger-jsdoc'
 
 
 let server: Server | undefined = undefined
@@ -106,9 +105,11 @@ async function start() {
     // Add Middlewears
     addMiddlewears(app)
 
+    const PORT = process.env.PORT || 3000
+
     // Listen For The Server
-    server = app?.listen(sPort, '0.0.0.0', () => {
-        console.log(`Server Is Live On http://0.0.0.0:${sPort}`)
+    server = app?.listen(PORT, () => {
+        console.log(`Server Is Live On http://0.0.0.0:${PORT}`)
     })
 }
 
