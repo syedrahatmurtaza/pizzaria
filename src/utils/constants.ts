@@ -1,4 +1,4 @@
-export const sPort: number = 80
+export const sPort: number = 8080
 export const serverSecret: string = "aD7pF7mA8yC0dC0k"
 
 export const dbName: string = "pizzaria"
