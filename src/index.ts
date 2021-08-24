@@ -107,8 +107,8 @@ async function start() {
     addMiddlewears(app)
 
     // Listen For The Server
-    server = app?.listen(sPort, () => {
-        console.log(`Server Is Live On http://localhost:${sPort}`)
+    server = app?.listen(sPort, '0.0.0.0', () => {
+        console.log(`Server Is Live On http://0.0.0.0:${sPort}`)
     })
 }
 
