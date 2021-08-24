@@ -1,13 +1,13 @@
 import { connect, connection } from "mongoose";
+import { dbHost, dbName, dbPassword, dbUser } from "../utils/constants";
 
 export class MongoDb {
     constructor() { }
 
-    async connect(host: string, dbName: string): Promise<boolean> {
-
+    async connect(): Promise<boolean> {
         let dbStatus: boolean = false
 
-        await connect(`mongodb://${host}/${dbName}`, {
+        await connect(`mongodb+srv://${dbUser}:${dbPassword}@${dbHost}/${dbName}`, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         }).then(function () {

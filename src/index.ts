@@ -15,7 +15,7 @@ let server: Server | undefined = undefined
  * @returns app
  */
 async function initApplication(): Promise<Application | undefined> {
-    const dbStatus = await new MongoDb().connect(dbHost, dbName)
+    const dbStatus = await new MongoDb().connect()
 
     let app: Application | undefined = undefined
     if (dbStatus) {
