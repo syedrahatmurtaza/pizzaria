@@ -6,7 +6,6 @@ import swaggerUi from 'swagger-ui-express'
 import { Server } from 'http'
 import { MainRouter } from './routes/index.routes'
 import swaggerJsDoc from 'swagger-jsdoc'
-import { RegisterRoutes } from '../temp/routes'
 
 
 let server: Server | undefined = undefined
